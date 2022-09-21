@@ -1,0 +1,45 @@
+import React, { useState } from 'react';
+import './ExpensesForm.css';
+
+const ExpensesForm = () => {
+    // using multiple state
+    const [enteredTitle, setEnteredTitle] = useState("");
+    const [enteredAmount, setEnteredAmount] = useState("");
+    const [enteredDate, setEnteredDate] = useState("");
+
+    const titleChangedHandler = event => {
+        console.log(event.target.value);
+        setEnteredTitle(event.target.value);
+    }
+
+    const amountChangedHandler = event => {
+        console.log(event.target.value);
+        setEnteredAmount(event.target.value)
+    }
+
+    const dateChangedHandler = event => {
+        console.log(event.target.value);
+        setEnteredDate(event.target.value);
+    }
+    return <form>
+        <div className='new-expense__controls'>
+            <div className='new-expense__control'>
+                <label>title</label>
+                <input type='text' onChange={titleChangedHandler}/>
+            </div>
+            <div className='new-expense__control'>
+                <label>amount</label>
+                <input type='number' min="0.1" step="0.01" onChange={amountChangedHandler}/>
+            </div>
+            <div className='new-expense__control'>
+                <label>date</label>
+                <input type='date' min="2019-01-01" max="2022-12-31" onChange={dateChangedHandler}/>
+            </div>
+        </div>
+        <div className='new-expense__actions'>
+            <button type="submit">Add new expense</button>
+        </div>
+    </form>
+}
+
+export default ExpensesForm;
