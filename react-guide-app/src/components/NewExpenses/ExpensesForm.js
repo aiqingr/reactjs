@@ -3,23 +3,50 @@ import './ExpensesForm.css';
 
 const ExpensesForm = () => {
     // using multiple state
-    const [enteredTitle, setEnteredTitle] = useState("");
-    const [enteredAmount, setEnteredAmount] = useState("");
-    const [enteredDate, setEnteredDate] = useState("");
+    // const [enteredTitle, setEnteredTitle] = useState("");
+    // const [enteredAmount, setEnteredAmount] = useState("");
+    // const [enteredDate, setEnteredDate] = useState("");
+
+    // const titleChangedHandler = event => {
+    //     console.log(event.target.value);
+    //     setEnteredTitle(event.target.value);
+    // }
+
+    // const amountChangedHandler = event => {
+    //     console.log(event.target.value);
+    //     setEnteredAmount(event.target.value)
+    // }
+
+    // const dateChangedHandler = event => {
+    //     console.log(event.target.value);
+    //     setEnteredDate(event.target.value);
+    // }
+
+    const [useInput, setUserInput] = useState({
+        enteredTitle: "",
+        enteredAmount: "",
+        enteredDate: ""
+    });
 
     const titleChangedHandler = event => {
-        console.log(event.target.value);
-        setEnteredTitle(event.target.value);
+        setUserInput({
+            ...setUserInput,
+            enteredTitle: event.target.value
+        });
     }
 
     const amountChangedHandler = event => {
-        console.log(event.target.value);
-        setEnteredAmount(event.target.value)
+        setUserInput({
+            ...setUserInput,
+            enteredAmount: event.target.value
+        });
     }
 
     const dateChangedHandler = event => {
-        console.log(event.target.value);
-        setEnteredDate(event.target.value);
+        setUserInput({
+            ...setUserInput,
+            enteredDate: event.target.value
+        });
     }
     return <form>
         <div className='new-expense__controls'>
