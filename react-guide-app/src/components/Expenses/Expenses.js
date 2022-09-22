@@ -16,6 +16,7 @@ function ExpenseDisplayed(props) {
             <ExpenseFilter selected={filteredYear} onSaveFiltered={saveFilterHandler}></ExpenseFilter>
             {props.items.map((expenses) => (
                 <ExpenseItem 
+                    key={expenses.id}
                     title={expenses.title} 
                     amount={expenses.amount}
                     date={expenses.date}
