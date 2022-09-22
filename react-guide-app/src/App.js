@@ -28,7 +28,10 @@ function App() {
       amount: 1502,
       date: new Date(2022, 9, 20)
     },
-  ]
+  ];
+  const addExpensesHandler = (newExpenses) => {
+    console.log('newExpenses :>> ', newExpenses);
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -44,7 +47,7 @@ function App() {
         >
           Learn React
         </a>
-        <NewExpenses />
+        <NewExpenses onAddExpenses={addExpensesHandler}/>
         <Expenses items={expense}/>
       </header>
     </div>
