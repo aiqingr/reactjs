@@ -9,7 +9,7 @@ const DUMMY_EXPENSE = [
     id: "ep1",
     title: "Car Insurance",
     amount: 102,
-    date: new Date(2022, 9, 10)
+    date: new Date(2020, 9, 10)
   },
   {
     id: "ep2",
@@ -20,13 +20,13 @@ const DUMMY_EXPENSE = [
   {
     id: "ep3",
     title: "Entertainment",
-    amount: 1202,
-    date: new Date(2022, 9, 15)
+    amount: 2300,
+    date: new Date(2020, 9, 15)
   },{
     id: "ep4",
     title: "Grocery",
-    amount: 1502,
-    date: new Date(2022, 9, 20)
+    amount: 2301,
+    date: new Date(2021, 9, 20)
   },
 ];
 
