@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import Card from "../UI/Card";
 import classes from "./AddUser.module.css";
 import Button from "../UI/Button";
 import ErrorModal from "../UI/ErrorModal";
-import Wrapper from "../Helper/Wrapper";
+// import Wrapper from "../Helper/Wrapper";
 
 const AddUser = props => {
     const [enteredUsername, setEnteredUsername] = useState("");
@@ -46,7 +46,7 @@ const AddUser = props => {
     }
 
     return (
-        <Wrapper>
+        <Fragment>
             {error && <ErrorModal 
                         title={error.title} 
                         message={error.message}
@@ -71,7 +71,7 @@ const AddUser = props => {
                     <Button type="submit">add user</Button>
                 </form>
             </Card>
-        </Wrapper>
+        </Fragment>
     )
 }
 
