@@ -16,4 +16,6 @@ const Button = (props) => {
   );
 };
 
+// the button is still re-excuted even with memo
+
 export default React.memo(Button);
