@@ -16,7 +16,8 @@ function App() {
 		<div className="app">
 			<h1>Hi there!</h1>
             {/* {showPara && <p>A new Para</p>} */}
-            <DemoOutput show={showPara}/>
+            {/* hard coded the show value to false. Children are still re-excuted */}
+            <DemoOutput show={false}/>
 			<Button onClick={showParaHandler}>Add new Paragraph</Button>
 		</div>
 	);
