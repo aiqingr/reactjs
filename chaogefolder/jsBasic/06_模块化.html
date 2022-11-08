@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module">
+        /* 
+            默认情况下 script标签不能使用import语句
+            如果想让他支持模块化，必须设置script的type属性为module
+        */
+        /* import a from "./05_模块化";
+        console.log(a) */
+
+        import { b as bb, c } from "./05_模块化.js"
+        console.log(bb,c)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

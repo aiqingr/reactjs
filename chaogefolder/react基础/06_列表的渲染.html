@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./scripts/react.development.js"></script>
+    <script src="./scripts/react-dom.development.js"></script>
+    <script src="./scripts/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const name = "sunwukong"
+        const lang = "cn"
+        /* 
+            {}只能用来放JS表达式，而不能放语句 if for
+        
+        */
+        // let div;
+        // if(lang === "en") {
+        //     div = <div>I am {name}</div>
+        // } else if(lang==="cn") {
+        //     div = <div>我是 {name}</div>
+        // }
+
+        const arr = ["sunwukong", "zhubajie", "shaheshang"]
+        /* 
+            将arr渲染成一个列表 
+            JSX会自动将数组中的元素在页面中显示
+        */
+
+        const data = arr.map((item) => <li>{item}</li>)
+        const list = <ul>{data}</ul>
+
+        const root = ReactDOM.createRoot(document.getElementById("root"))
+        root.render(list)
+    </script>
+</body>
+</html>

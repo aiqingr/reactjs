@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./scripts/react.development.js"></script>
+    <script src="./scripts/react-dom.development.js"></script>
+</head>
+
+<body>
+    <button id="btn1">I am a button</button>
+    <div id="root"></div>
+    <script>
+        /* 
+            React.createElement()
+            - 用来创建一个react元素
+            - 参数
+                1.元素的名称（html标签必须小写）
+                2.标签的属性
+                    - 在设置事件时 属性名需要改成驼峰命名法
+                    - class属性需要使用className来设置
+                3.元素的内容（子元素）
+            注意：
+            react元素最终会通过虚拟DOM转换成真实的DOM元素
+            React元素一旦被创建就无法修改只能通过新创建的元素替换
+        */
+        const button = React.createElement("button", {
+            id: "btn",
+            type: "button",
+            className: "hello",
+            onClick: () => {
+                alert("what")
+            }
+        }, "Click me")
+
+        const div = React.createElement("div", {}, "I am a div", button)
+        const root = ReactDOM.createRoot(document.getElementById("root"))
+        root.render(div)
+
+        const btn1 = document.getElementById("btn1")
+        btn1.addEventListener("click", () => {
+            const button = React.createElement("button", {
+                id: "btn",
+                type: "button",
+                className: "hello",
+                onClick: () => {
+                    alert("what")
+                }
+            }, "I am a new guy")
+
+            const div = React.createElement("div", {}, "I am a div", button)
+            // 修改react元素后 必须对根元素进行渲染
+            // 当调用render时候React会自动比较两次渲染的元素 在真实DOM中只修改变化的部分
+            // 没有发生变化的不动
+            root.render(div)
+        })
+    </script>
+</body>
+
+</html>

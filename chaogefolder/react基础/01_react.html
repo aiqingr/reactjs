@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./scripts/react.development.js"></script>
+    <script src="./scripts/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <button id="btn">Click me</button>
+    <script>
+    
+/*         const btn = document.getElementById("btn")
+        btn.onclick = () => {
+            const div = document.createElement("div")
+            div.innerText = "I am a div"
+            const root = document.getElementById("root")
+            root.appendChild(div)
+        } */
+
+        /* 
+            React.createElement()
+            用来创建一个React元素
+            参数：
+                1. 元素名（组建名）
+                2. 元素中的属性
+                3. 元素的子元素（内容）
+        */
+
+        const div = React.createElement("div", {}, "I am a div created by react"); // 创建一个react元素
+        // 获取根元素对应的React元素
+        /* 
+            ReactDOM.createRoot()
+            用来创建React根元素 需要一个DOM元素作为参数
+        */
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+
+        root.render(div)
+
+
+    </script>
+</body>
+</html>

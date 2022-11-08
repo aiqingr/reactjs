@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./scripts/react.development.js"></script>
+    <script src="./scripts/react-dom.development.js"></script>
+    <script src="./scripts/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <button id="btn">Click me</button>
+    <script type="text/babel">
+        const btn = document.getElementById("btn")
+        const arr = ["sunwukong", "zhubajie", "shaheshang"]
+        const data = arr.map((item) => <li key={item}>{item}</li>)
+        const list = <ul>{data}</ul>
+        btn.onclick = () => {
+            console.log(123);
+            const arr = ["tangseng","sunwukong", "zhubajie", "shaheshang"]
+            const data = arr.map((item) => <li key={item}>{item}</li>)
+            const list = <ul>{data}</ul>
+            // const root = ReactDOM.createRoot(document.getElementById("root"))
+            root.render(list)
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById("root"))
+        root.render(list)
+
+        /*
+            在React中我们操作的元素叫做react元素并不是真正的dom元素
+            react通过虚拟dom 将react元素和原生dom进行映射 虽然操作的是React元素
+            但这些操作最终都会在DOM中体现
+            虚拟DOM的好处
+                1）降低API复杂度
+                2）解决兼容性问题
+                3）提升性能（减少不必要的操作）
+            每当我们调用root.render()的时候页面就会发生渲染
+            React会通过diff算法将新和旧的元素进行比较 
+            通过比较找到发生变化的元素并且只对发生变化的元素进行修改没有发生的不予以处理
+
+            diff
+            比较两次数据的时候
+            react会先去比较父元素父元素如果不同直接所有元素全部替换
+            父元素一直再去逐个比较子元素直到找到所有变化
+
+            在JSX中显示数组的时候 数组中每一个元素都需要一个唯一的key 否则会显示红色警报
+            页面重新渲染的时候react会按照顺序以此比较
+            如果列表的顺序不发生变化 没有问题
+            如果列表的顺序发生变化 则有性能问题
+        */
+    </script>
+</body>
+
+</html>
