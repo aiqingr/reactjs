@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Cart from "./components/Cart/Cart";
 import FilterMeals from "./components/FilterMeals/FilterMeals";
 import Meals from "./components/Meals/Meals"
 import CartContext from "./store/CartContext";
@@ -107,8 +108,17 @@ const App = () => {
 
         setCartData(newCart)
     }
+
+    const clearCart = () => {
+        const newCart = {...cartData}
+        newCart.items.forEach(item=> delete item.amount)
+        newCart.items = []
+        newCart.totalAmount = 0
+        newCart.totalPrice = 0
+        setCartData(newCart)
+    }
     return (
-            <CartContext.Provider value={{...cartData, addItem, removeItem}}>
+            <CartContext.Provider value={{...cartData, addItem, removeItem, clearCart}}>
                 <FilterMeals onFilter={filterHandler}></FilterMeals>
                 <div>
                     <Meals 
@@ -117,6 +127,7 @@ const App = () => {
                         // onSub={subMealHandler}
                     />
                 </div>
+                <Cart></Cart>
             </CartContext.Provider>
 
     )

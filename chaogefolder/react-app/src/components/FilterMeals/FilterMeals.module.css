@@ -21,15 +21,16 @@
     width: 650rem;
     height: 70rem;
     border: none;
-    border-radius: 14px;
+    border-radius: 28rem;
     background-color: #f2f2f2;
     padding-left: 60rem;
     outline: none;
+    font-size: 36rem;
 }
 
 .SearchIcon{
     color: #aaa;
     position: absolute;
-    font-size: 20px;
+    font-size: 40rem;
     left: 10rem;
 }

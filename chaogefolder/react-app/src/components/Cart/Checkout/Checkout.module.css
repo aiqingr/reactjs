@@ -1,0 +1,68 @@
+.Checkout{
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #eee;
+}
+
+.Close{
+    font-size: 36rem;
+    color: #000;
+}
+
+.MealsDesc{
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 0 40rem;
+}
+
+.Header{
+    display: flex;
+    border-bottom: 1px solid #f2f2f2;
+    height: 80rem;
+    align-items: center;
+    font-size: 20rem;
+}
+
+.Meals{
+    overflow: auto;
+    max-height: 900rem;
+}
+
+.Footer{
+    position: relative;
+    height: 120rem;
+    border-top: 1px #f2f2f2 dotted;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-weight: bold;
+    font-size: 20rem;
+}
+
+.Footer::before,
+.Footer::after {
+    content: "";
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    background-color: #eee;
+    border-radius: 50%;
+    top: -10rem;
+    left: -30rem;
+}
+
+.Footer::after{
+    left: auto;
+    right: -30rem;
+}
+
+.TotalPrice::before{
+    content: "Total: $";
+    font-weight: normal;
+    font-size: 18rem;
+    margin-right: 10rem;
+}

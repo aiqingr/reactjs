@@ -22,15 +22,13 @@ img{
 
 .Title{
     font-weight: normal;
-    font-size: 18rem;
+    font-size: 36rem;
     margin: 0;
-    background-color: orange;
 }
 
 .Desc {
     color: #bbb;
-    font-size: 14rem;
-    background-color: red;
+    font-size: 28rem;
 }
 
 .PriceWrap {
@@ -41,10 +39,10 @@ img{
 
 .Price{
     font-weight: bold;
-    font-size: 20rem;
+    font-size: 40rem;
 }
 
 .Price::before {
     content: "$";
-    font-size: 18rem;
+    font-size: 36rem;
 }
