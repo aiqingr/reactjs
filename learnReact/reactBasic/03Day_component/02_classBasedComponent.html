@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/javascript" src="../../scripts/react.development.js"></script>
+    <script type="text/javascript" src="../../scripts/react-dom.development.js"></script>
+    <script type="text/javascript" src="../../scripts/babel.min.js"></script>
+
+    <script type="text/babel">
+        class MyComponent extends React.Component{
+
+            // render是放在了哪里？ -> MyComponent这个类的原型对象上，供实例使用
+            // render中的this是谁? -> MyCompnoent实例对象,也就是MyComponent组件实例对象
+            render() {
+                console.log("this-->", this);
+                return (
+                    <h2>I am a class based component</h2>
+                )
+            }
+        }
+
+        ReactDOM.render(<MyComponent />, document.getElementById("root"))
+
+        /* 
+            执行了ReactDOM.render...
+            1 react解析组件标签 找到了MyComponent
+            2 发现组件是通过类定义的的，随后new出来该类的实例，并通过实例调用到原型上的render方法
+            3 将render返回的虚拟DOM转化成真实DOM 随后呈现在页面中
+        */
+    </script>
+</body>
+
+</html>

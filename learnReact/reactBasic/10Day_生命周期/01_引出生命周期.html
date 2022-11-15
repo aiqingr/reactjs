@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/javascript" src="../../scripts/react.development.js"></script>
+    <script type="text/javascript" src="../../scripts/react-dom.development.js"></script>
+    <script type="text/javascript" src="../../scripts/babel.min.js"></script>
+
+    <script type="text/babel">
+        class Life extends React.Component {
+
+            state = {
+                opacity: 0.5
+            }
+
+            death = () => {
+                ReactDOM.unmountComponentAtNode(document.getElementById("root")) 
+            }
+            // 组件挂载完毕
+            componentDidMount() {
+                console.log("I am running")
+                this.timer = setInterval(()=>{
+                    let { opacity } = this.state
+                    opacity -= 0.1
+                    if(opacity <=0) opacity = 1
+                    this.setState({opacity}) 
+                },200)
+            }
+
+            componentWillUnmount() {
+                console.log("hahahahahha");
+                clearInterval(this.timer)
+            } 
+            render() {
+                console.log('render :>> ');
+/*                 setInterval(()=>{
+                    let {opacity} = this.state
+                    opacity -= 0.1
+                    if(opacity<=0) opacity = 1
+                    this.setState({opacity})
+                }, 200); */
+                return (
+                    <div>
+                        <h2 style={{opacity: this.state.opacity }}>React is too hard</h2>  
+                        <button onClick={this.death}>Click me</button> 
+                    </div>
+                )  
+            }
+        }
+
+        ReactDOM.render(<Life />, document.getElementById("root"))
+    </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/javascript" src="../../scripts/react.development.js"></script>
+    <script type="text/javascript" src="../../scripts/react-dom.development.js"></script>
+    <script type="text/javascript" src="../../scripts/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        class Count extends React.Component {
+            // 构造器
+            constructor(props) {
+                console.log("Count-constructor");
+                super(props)
+                this.state = {count:0}
+            }
+            // 若state的值在任何时候都取决于props，可以考虑使用他
+            static getDerivedStateFromProps(props,state) {
+                console.log("getDerivedStateFromProps", props, state);
+                return null
+            }
+
+            getSnapshotBeforeUpdate() {
+                console.log("getSnapshotBeforeUpdate")
+                return "nihaoya"
+            }
+            // 组件将要挂载的钩子
+            // componentWillMount() {
+            //     console.log("componentWillMount")
+            // }
+            // 组件挂载完毕的钩子
+            componentDidMount() {
+                console.log("componentDidMount")
+            }
+            //组件将要卸载的钩子
+            componentWillUnmount() {
+                console.log("componentWillUnmount");
+            }
+            // 控制组件更新的阀门钩子
+            shouldComponentUpdate() {
+                console.log("shouldComponentUpdate")
+                return true
+            }
+            // 组件将要更新的钩子
+            // componentWillUpdate() {
+            //     console.log("componentWillUpdate");
+            // }
+            // 组件更新完毕的钩子
+            // preProps preState
+            componentDidUpdate(a, b, c) {
+                console.log("componentDidUpdate", a, b, c);
+            }
+            add = () => {
+                const {count} = this.state
+                this.setState({count:count+1})
+            }
+
+            death = () => {
+                ReactDOM.unmountComponentAtNode(document.getElementById("root"))
+            }
+
+            force = () => {
+                this.forceUpdate()
+            }
+            render() {
+                console.log("render");
+                const {count} = this.state
+                return (
+                    <div>
+                        <h2>当前求和: {count}</h2>   
+                        <button onClick={this.add}>点我+1</button> 
+                        <button onClick={this.death}>Kill it</button>
+                        <button onClick={this.force}>不更改任何state中的数据</button>
+                    </div>
+                )
+            }
+        }
+
+        class FatherComponent extends React.Component {
+            state = {
+                carName: "Benz"
+            }
+
+            changeCarHandler = () => {
+                this.setState({carName: "Linken"})
+            }
+            render() {
+                return (
+                    <div>
+                        <button onClick={this.changeCarHandler}>Change Car</button>
+                        <SonComponent carName={this.state.carName}/>
+                    </div>
+                )
+            }
+        }
+
+        class SonComponent extends React.Component {
+
+            componentWillReceiveProps(props) {
+                console.log(props);
+                console.log("B----->componentWillReceiveProps")
+            }
+
+            shouldComponentUpdate() {
+                console.log("shouldComponentUpdate")
+                return true
+            }
+
+            componentWillUpdate() {
+                console.log("componentWillUpdate");
+            }
+
+            componentDidUpdate() {
+                console.log("componentDidUpdate")
+            }
+            render() {
+                console.log("render");
+                return (
+                    <div>My car is {this.props.carName}</div>
+                )
+            }
+        }
+        ReactDOM.render(<Count count={199}/>, document.getElementById("root"))
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root1"></div>
+    <div id="root2"></div>
+    <div id="root3"></div>
+
+    <script type="text/javascript" src="../../scripts/react.development.js"></script>
+    <script type="text/javascript" src="../../scripts/react-dom.development.js"></script>
+    <script type="text/javascript" src="../../scripts/babel.min.js"></script>
+    <script type="text/javascript" src="../../scripts/prop-types.js"></script>
+
+    <script type="text/babel">
+        function Person(props) {
+            return (
+                <ul>
+                    <li>name: {props.name}</li>
+                    <li>age: {props.age}</li>
+                    <li>gender: {props.gender}</li>
+                </ul>
+            )
+        }
+
+        Person.propTypes = {
+            name: PropTypes.string.isRequired,
+            age: PropTypes.number
+        }
+
+        Person.defaultProps = {
+            age: 20
+        }
+        ReactDOM.render(<Person name="nick" gender="m" />, document.getElementById("root2"))
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/javascript" src="../../scripts/react.development.js"></script>
+    <script type="text/javascript" src="../../scripts/react-dom.development.js"></script>
+    <script type="text/javascript" src="../../scripts/babel.min.js"></script>
+
+    <script type="text/babel">
+        class Demo extends React.Component {
+
+            state = {
+                isHot: false
+            }
+
+            changeWeather = () => {
+                const { isHot } = this.state
+                this.setState({ isHot: !isHot })
+            }
+            showData = () => {
+                const { input1 } = this
+                console.log(input1.value)
+            }
+
+            showData2 = () => {
+                const {input2} = this
+                console.log('input2.value :>> ', input2.value);
+            }
+
+            myInput = (curNode) => {
+                this.input2 = curNode
+                console.log('input2', this.input2)
+            }
+            render() {
+                // const { isHot } = this.state
+                return (
+                    <div>
+                        <h2>Today is {this.state.isHot ? "hot" : "cool"}</h2>
+
+                        <input ref={curNode => {
+                            this.input1 = curNode
+                            console.log("------>", curNode)
+                        }} type="text" />
+                        <input ref={this.myInput} type="text" />
+                        <button onClick={this.showData}>Click me</button>
+                        <button onClick={this.showData2}>Click me 2</button>
+                        <button onClick={this.changeWeather}>Click me to change Weather</button>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Demo />, document.getElementById("root"))
+    </script>
+</body>
+
+</html>

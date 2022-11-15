@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/javascript" src="../../scripts/react.development.js"></script>
+    <script type="text/javascript" src="../../scripts/react-dom.development.js"></script>
+    <script type="text/javascript" src="../../scripts/babel.min.js"></script>
+
+    <script type="text/babel">
+        class Person extends React.Component {
+            render(){
+                console.log(this);
+                const {name, age, gender} = this.props
+                return (
+                    <ul>
+                        <li>name: {name}</li>
+                        <li>age: {age}</li>
+                        <li>gender: {gender}</li>
+                    </ul>
+                )
+            }
+        }
+        const p = {name: "tom", age: 20, gender: "m"}
+        ReactDOM.render(<Person {...p}/>, document.getElementById("root"))
+    </script>
+</body>
+</html>

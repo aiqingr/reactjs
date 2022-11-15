@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person {
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+            /* 
+                speak方法 -> 放在了原型对象上，提供给实例使用
+                通过Person实例调用speak，speak中的this就是Person实例
+            */
+            speak() {
+                console.log("speak---->", this)
+            }
+        }
+
+        const p1 = new Person("tom", 18)
+        p1.speak()
+        const x = p1.speak
+        x()
+
+        function demo1() {
+            "use strict"
+            console.log("demo1--->", this)
+        }
+
+        demo1()
+
+        function demo2() {
+            console.log("demo2--->", this)
+        }
+
+        demo2()
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/javascript" src="../../scripts/react.development.js"></script>
+    <script type="text/javascript" src="../../scripts/react-dom.development.js"></script>
+    <script type="text/javascript" src="../../scripts/babel.min.js"></script>
+
+    <script type="text/babel">
+        class Login extends React.Component{
+            state = {
+                username: "",
+                password: ""
+            }
+
+            saveData = (dataType, e) => {
+                // this.setState = ({[dataType]: e.target.value})
+                this.setState({
+                        [dataType]: e.target.value
+                    })
+            }
+
+            submitHandler = (e) => {
+                e.preventDefault()
+                const { username, password } = this.state
+                console.log(`username: ${username}, password: ${password}`)
+            }
+            render() {
+                return (
+                    <form action="www.bing.com" onSubmit={this.submitHandler}>
+                        username: <input type="text"
+                            name="username"
+                            onChange={(e)=> this.saveData("username", e)}/>  
+                        password: <input 
+                            type="password" 
+                            name="password"
+                            onChange={(e)=> this.saveData("password", e)}/>  
+                        <button>Login</button>
+                    </form>
+                )
+            }
+        }
+        ReactDOM.render(<Login />, document.getElementById("root"))
+    </script>
+</body>
+</html>

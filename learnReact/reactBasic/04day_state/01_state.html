@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/javascript" src="../../scripts/react.development.js"></script>
+    <script type="text/javascript" src="../../scripts/react-dom.development.js"></script>
+    <script type="text/javascript" src="../../scripts/babel.min.js"></script>
+
+    <script type="text/babel">
+        class Weather extends React.Component {
+            constructor(props){
+                super(props)
+                this.state = {
+                    isHot: false
+                }
+            }
+            changeWeather() {
+                // changeWeather放在哪里？--> 在Weather的原型对象上，供实例使用
+                // ***通过Weather实例调用changeWether时，changeWeather中的this就是Weather实例
+                // ***由于changeWeather是作为onClick的回调，所以不是通过实例调用的，是直接调用
+                // 类的方法本身就已经开启了严格模式
+                console.log(this.state.isHot)
+            }
+            render() {
+                console.log(this)
+                const {isHot} = this.state
+                return <h1 id="title" onClick={this.changeWeather}>It is {isHot ? "hot" : "not hot"} today</h1>
+            }
+        }
+
+        ReactDOM.render(<Weather />, document.getElementById("root"))
+
+
+/*         const title = document.getElementById("title")
+        title.addEventListener("click", ()=>{
+            console.log("clicked");
+        }) */
+
+/*         const title =document.getElementById("title")
+        title.onclick = () => {
+            console.log("Clicked")
+        } */
+    </script>
+</body>
+
+</html>
